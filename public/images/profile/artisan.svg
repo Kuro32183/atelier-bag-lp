@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F3EFE8"/>
+  <circle cx="200" cy="180" r="100" fill="#e8d5c0"/>
+  <!-- face silhouette -->
+  <ellipse cx="200" cy="175" rx="65" ry="75" fill="#d4a574"/>
+  <!-- body -->
+  <path d="M110 380 Q110 290 200 280 Q290 290 290 380" fill="#243B53"/>
+  <text x="200" y="370" font-family="serif" font-size="14" fill="#FAF8F4" text-anchor="middle">田中 美和</text>
+</svg>
