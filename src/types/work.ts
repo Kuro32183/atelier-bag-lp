@@ -1,8 +1,4 @@
 // src/types/work.ts
-// Figma: Domain Types — Work
-
-export type WorkCategory = 'bag' | 'wallet' | 'pouch' | 'kimono';
-
 export interface ProductDimensions {
   height: number;
   width: number;
@@ -29,19 +25,24 @@ export interface SemiCustomOptions {
   leatherDetails: CustomOption[];
 }
 
+export type WorkCategory = 'bag' | 'wallet' | 'pouch' | 'kimono';
+
 export interface Work {
   id: string;
   slug: string;
   title: string;
-  category: WorkCategory;
   description: string;
+  basePrice: number;
   material: string;
+  lining: string;
+  weight: number;
+  origin: string;
   dimensions: ProductDimensions;
   capacity: Capacity;
-  basePrice: number;
-  semiCustom: SemiCustomOptions;
   thumbnail: string;
   images: string[];
+  category: WorkCategory;
   featured: boolean;
   createdAt: string;
+  semiCustom: SemiCustomOptions;
 }

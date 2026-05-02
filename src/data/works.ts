@@ -1,105 +1,104 @@
 // src/data/works.ts
-
-import type { Work } from '@/types/work';
+import { Work } from '@/types/work';
 
 export const works: Work[] = [
   {
-    id: 'w001',
-    slug: 'original-fabric-gamaguchi-shoulder',
+    id: 'work-001',
+    slug: 'original-fabric-gamaguchi',
     title: 'オリジナル生地 がま口ショルダーバッグ',
-    category: 'bag',
-    description:
-      '落ち着いたネイビーに、上品な花柄の織り生地を使用。カジュアルにも着物にも合わせやすいデザインです。真鍮のがま口は使うほどに馴染みが増し、長くご愛用いただけます。',
-    material: 'オリジナル生地・本革・真鍮',
-    dimensions: { height: 24, width: 32, depth: 14, weight: 480 },
-    capacity: { a4: true, bottle500: true, smartphone: true, wallet: true },
+    description: 'オリジナルで仕上げた生地に、真鍋のがま口と革の持ち手を組み合わせた一点もののショルダーバッグです。',
     basePrice: 28000,
-    semiCustom: {
-      handles: [
-        { id: 'h-standard', label: '標準仕様', amount: 0, image: '' },
-        { id: 'h-leather-short', label: '本革（短）', amount: 3000, image: '' },
-        { id: 'h-leather-shoulder', label: '本革（肩掛）', amount: 4500, image: '' },
-        { id: 'h-detachable', label: '着脱式', amount: 5000, image: '' },
-      ],
-      leatherDetails: [
-        { id: 'ld-none', label: '追加なし', amount: 0, image: '' },
-        { id: 'ld-tassel', label: '革タッセル', amount: 1500, image: '' },
-        { id: 'ld-flower', label: '革花モチーフ', amount: 2500, image: '' },
-        { id: 'ld-braid', label: '革編み装飾', amount: 3500, image: '' },
-        { id: 'ld-engraving', label: '名入れ刻印', amount: 2000, image: '' },
-      ],
-    },
-    thumbnail: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80',
+    material: 'オリジナル生地・真鍋・本革',
+    lining: 'コットン（ベージュ）',
+    weight: 480,
+    origin: '日本（ハンドメイド）',
+    dimensions: { height: 24, width: 32, depth: 14, weight: 480 },
+    capacity: { a4: false, bottle500: false, smartphone: true, wallet: true },
+    thumbnail: '/images/works/gamaguchi-01.jpg',
     images: [
-      'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80',
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
-      'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=800&q=80',
+      '/images/works/gamaguchi-01.jpg',
+      '/images/works/gamaguchi-02.jpg',
+      '/images/works/gamaguchi-03.jpg',
     ],
+    category: 'bag',
     featured: true,
     createdAt: '2024-03-01',
-  },
-  {
-    id: 'w002',
-    slug: 'leather-tote-a4',
-    title: '栃木レザー A4トートバッグ',
-    category: 'bag',
-    description:
-      '厳選した栃木レザーを使用したA4サイズ対応のトートバッグ。シンプルながらも深みのある色合いと上質な革の質感が特徴です。ビジネスからカジュアルまで幅広くご愛用いただけます。',
-    material: '栃木レザー（ヌメ革）',
-    dimensions: { height: 30, width: 36, depth: 12, weight: 620 },
-    capacity: { a4: true, bottle500: true, smartphone: true, wallet: true },
-    basePrice: 45000,
     semiCustom: {
       handles: [
-        { id: 'h-standard', label: '標準仕様', amount: 0, image: '' },
-        { id: 'h-leather-shoulder', label: '肩掛けストラップ追加', amount: 5000, image: '' },
+        { id: 'handle-standard', label: '標準仕様', amount: 0, image: '/images/options/handle-standard.jpg' },
+        { id: 'handle-leather-short', label: '本革（短）', amount: 3000, image: '/images/options/handle-leather-short.jpg' },
+        { id: 'handle-leather-shoulder', label: '本革（肂掛け）', amount: 4500, image: '/images/options/handle-leather-shoulder.jpg' },
+        { id: 'handle-detachable', label: '脅着式', amount: 5000, image: '/images/options/handle-detachable.jpg' },
       ],
       leatherDetails: [
-        { id: 'ld-none', label: '追加なし', amount: 0, image: '' },
-        { id: 'ld-engraving', label: '名入れ刻印', amount: 2000, image: '' },
+        { id: 'detail-none', label: '追加しない', amount: 0, image: '/images/options/detail-none.jpg' },
+        { id: 'detail-tassel', label: '革タッセル', amount: 1500, image: '/images/options/detail-tassel.jpg' },
+        { id: 'detail-flower', label: '革花モチーフ', amount: 2500, image: '/images/options/detail-flower.jpg' },
+        { id: 'detail-braid', label: '革索み細工', amount: 3500, image: '/images/options/detail-braid.jpg' },
+        { id: 'detail-engraving', label: '名入れ刷印', amount: 2000, image: '/images/options/detail-engraving.jpg' },
       ],
     },
-    thumbnail: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=800&q=80',
-    ],
+  },
+  {
+    id: 'work-002',
+    slug: 'tochigi-leather-tote',
+    title: '栃木レザー トートバッグ',
+    description: '植物タンニン骿しの栃木レザーを使用したシンプルなトートバッグ。使うほどに画が生まれ、深みが増します。',
+    basePrice: 45000,
+    material: '栃木レザー（植物タンニン骿し）',
+    lining: 'リネン',
+    weight: 620,
+    origin: '日本（ハンドメイド）',
+    dimensions: { height: 30, width: 38, depth: 12, weight: 620 },
+    capacity: { a4: true, bottle500: true, smartphone: true, wallet: true },
+    thumbnail: '/images/works/tote-01.jpg',
+    images: ['/images/works/tote-01.jpg', '/images/works/tote-02.jpg'],
+    category: 'bag',
     featured: true,
     createdAt: '2024-02-15',
-  },
-  {
-    id: 'w003',
-    slug: 'kimono-clutch-pouch',
-    title: '着物地クラッチポーチ',
-    category: 'pouch',
-    description:
-      '着物の端切れを活かしたクラッチポーチ。お茶席やフォーマルな場面にもお使いいただける上品な佇まいです。真鍮のがま口金具が アクセントになっています。',
-    material: '着物地・本革・真鍮',
-    dimensions: { height: 14, width: 22, depth: 5, weight: 180 },
-    capacity: { a4: false, bottle500: false, smartphone: true, wallet: true },
-    basePrice: 18000,
     semiCustom: {
       handles: [
-        { id: 'h-standard', label: '標準仕様', amount: 0, image: '' },
+        { id: 'handle-standard', label: '標準仕様', amount: 0, image: '/images/options/handle-standard.jpg' },
+        { id: 'handle-leather-short', label: '本革（短）', amount: 3000, image: '/images/options/handle-leather-short.jpg' },
+        { id: 'handle-leather-shoulder', label: '本革（肂掛け）', amount: 4500, image: '/images/options/handle-leather-shoulder.jpg' },
+        { id: 'handle-detachable', label: '脅着式', amount: 5000, image: '/images/options/handle-detachable.jpg' },
       ],
       leatherDetails: [
-        { id: 'ld-none', label: '追加なし', amount: 0, image: '' },
-        { id: 'ld-tassel', label: '革タッセル', amount: 1500, image: '' },
-        { id: 'ld-engraving', label: '名入れ刻印', amount: 2000, image: '' },
+        { id: 'detail-none', label: '追加しない', amount: 0, image: '/images/options/detail-none.jpg' },
+        { id: 'detail-tassel', label: '革タッセル', amount: 1500, image: '/images/options/detail-tassel.jpg' },
+        { id: 'detail-flower', label: '革花モチーフ', amount: 2500, image: '/images/options/detail-flower.jpg' },
+        { id: 'detail-braid', label: '革索み細工', amount: 3500, image: '/images/options/detail-braid.jpg' },
+        { id: 'detail-engraving', label: '名入れ刷印', amount: 2000, image: '/images/options/detail-engraving.jpg' },
       ],
     },
-    thumbnail: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80',
-    ],
-    featured: false,
+  },
+  {
+    id: 'work-003',
+    slug: 'kimono-gamaguchi-pouch',
+    title: '着物布 がま口ポーチ',
+    description: '着物の端布を再利用したがま口ポーチ。和の眺を持ち歩きながら、現代の日常にも滜れる一点です。',
+    basePrice: 18000,
+    material: '着物布・真鍋・本革',
+    lining: 'コットン',
+    weight: 180,
+    origin: '日本（ハンドメイド）',
+    dimensions: { height: 14, width: 20, depth: 6, weight: 180 },
+    capacity: { a4: false, bottle500: false, smartphone: false, wallet: false },
+    thumbnail: '/images/works/kimono-01.jpg',
+    images: ['/images/works/kimono-01.jpg', '/images/works/kimono-02.jpg'],
+    category: 'pouch',
+    featured: true,
     createdAt: '2024-01-20',
+    semiCustom: {
+      handles: [
+        { id: 'handle-standard', label: '標準仕様', amount: 0, image: '/images/options/handle-standard.jpg' },
+        { id: 'handle-leather-short', label: '本革（短）', amount: 3000, image: '/images/options/handle-leather-short.jpg' },
+      ],
+      leatherDetails: [
+        { id: 'detail-none', label: '追加しない', amount: 0, image: '/images/options/detail-none.jpg' },
+        { id: 'detail-tassel', label: '革タッセル', amount: 1500, image: '/images/options/detail-tassel.jpg' },
+        { id: 'detail-engraving', label: '名入れ刷印', amount: 2000, image: '/images/options/detail-engraving.jpg' },
+      ],
+    },
   },
 ];
-
-export function getWorkBySlug(slug: string): Work | undefined {
-  return works.find((w) => w.slug === slug);
-}
-
-export function getFeaturedWorks(): Work[] {
-  return works.filter((w) => w.featured);
-}
