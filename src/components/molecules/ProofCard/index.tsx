@@ -1,32 +1,30 @@
 // src/components/molecules/ProofCard/index.tsx
-// Figma: Molecules/ProofCard/Default
+import { Scissors, Leaf, Clock, Heart, Star } from 'lucide-react';
 
-import { Scissors, Leaf, Clock } from 'lucide-react';
-
-interface ProofCardProps {
+export interface ProofCardProps {
   title: string;
   body: string;
   icon: string;
 }
 
-const iconMap: Record<string, React.ReactNode> = {
-  needle: <Scissors className="w-6 h-6" />,
-  leaf: <Leaf className="w-6 h-6" />,
-  clock: <Clock className="w-6 h-6" />,
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  needle: Scissors,
+  leaf: Leaf,
+  clock: Clock,
+  heart: Heart,
+  star: Star,
 };
 
-export function ProofCard({ title, body, icon }: ProofCardProps) {
+export default function ProofCard({ title, body, icon }: ProofCardProps) {
+  const Icon = iconMap[icon] ?? Star;
+
   return (
-    <div className="group flex flex-col gap-4 p-6 bg-paper border border-borderSubtle rounded-lg hover:shadow-md transition-shadow duration-base">
-      <div className="w-12 h-12 rounded-md bg-linen flex items-center justify-center text-leather">
-        {iconMap[icon] ?? <Scissors className="w-6 h-6" />}
+    <div className="flex flex-col items-center text-center p-8 bg-paper border border-border-subtle rounded-md group hover:border-leather transition-colors duration-base">
+      <div className="w-12 h-12 rounded-full bg-linen flex items-center justify-center mb-5 group-hover:bg-leather/10 transition-colors duration-base">
+        <Icon className="w-5 h-5 text-leather" aria-hidden />
       </div>
-      <div className="space-y-2">
-        <h3 className="font-heading text-lg font-bold text-textPrimary">{title}</h3>
-        <p className="font-body text-sm text-textPrimary/60 leading-relaxed whitespace-pre-line">
-          {body}
-        </p>
-      </div>
+      <h3 className="font-heading font-bold text-primary text-xl mb-3">{title}</h3>
+      <p className="text-text-primary/70 text-sm leading-relaxed whitespace-pre-line">{body}</p>
     </div>
   );
 }

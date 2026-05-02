@@ -1,29 +1,33 @@
 // src/components/molecules/SectionTitle/index.tsx
-// Figma: Molecules/SectionTitle
-
 import { cn } from '@/lib/utils';
 
-interface SectionTitleProps {
-  label?: string;
+export interface SectionTitleProps {
+  eyebrow?: string;
   title: string;
   subtitle?: string;
   center?: boolean;
   className?: string;
 }
 
-export function SectionTitle({ label, title, subtitle, center = false, className }: SectionTitleProps) {
+export default function SectionTitle({
+  eyebrow,
+  title,
+  subtitle,
+  center = false,
+  className,
+}: SectionTitleProps) {
   return (
     <div className={cn('space-y-3', center && 'text-center', className)}>
-      {label && (
-        <p className="font-latin text-xs tracking-[0.2em] uppercase text-brass">
-          {label}
+      {eyebrow && (
+        <p className="font-latin text-xs tracking-[0.2em] uppercase text-leather">
+          {eyebrow}
         </p>
       )}
-      <h2 className="font-heading text-2xl md:text-4xl font-bold text-textPrimary leading-snug">
+      <h2 className="font-heading font-bold text-primary text-3xl md:text-4xl leading-tight tracking-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="font-body text-base text-textPrimary/60 leading-relaxed whitespace-pre-line">
+        <p className="text-text-primary/70 text-base md:text-lg leading-relaxed mt-3">
           {subtitle}
         </p>
       )}
