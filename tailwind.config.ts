@@ -11,13 +11,13 @@ const config: Config = {
     extend: {
       colors: {
         primary: '#102A43',
-        primaryLight: '#243B53',
+        'primary-light': '#243B53',
         leather: '#7F5539',
         brass: '#B08968',
         paper: '#FAF8F4',
         linen: '#F3EFE8',
-        textPrimary: '#111111',
-        borderSubtle: '#D6D0C7',
+        'text-primary': '#111111',
+        'border-subtle': '#D6D0C7',
       },
       fontFamily: {
         heading: ['Shippori Mincho', 'serif'],
