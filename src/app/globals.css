@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #102A43;
+    --color-primary-light: #243B53;
+    --color-leather: #7F5539;
+    --color-brass: #B08968;
+    --color-paper: #FAF8F4;
+    --color-linen: #F3EFE8;
+    --color-text-primary: #111111;
+    --color-border-subtle: #D6D0C7;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-text-primary font-body antialiased;
+  }
+
+  * {
+    @apply border-border-subtle;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .heading-display {
+    @apply font-heading font-bold text-primary leading-tight tracking-tight;
+  }
+
+  .text-eyebrow {
+    @apply font-latin text-xs tracking-[0.2em] uppercase text-leather;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Shippori Mincho', serif;
+  }
+
+  .font-body {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .font-latin {
+    font-family: 'Avenir Next', 'Avenir', sans-serif;
+  }
+}
