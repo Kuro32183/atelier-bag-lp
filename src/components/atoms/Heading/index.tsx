@@ -1,16 +1,29 @@
 // src/components/atoms/Heading/index.tsx
-// Figma: Atoms/Heading
-
-import type { HeadingProps } from '@/types/common';
 import { cn } from '@/lib/utils';
 
-const styles = {
-  h1: 'font-heading text-4xl md:text-6xl font-bold leading-snug tracking-tight text-textPrimary',
-  h2: 'font-heading text-2xl md:text-4xl font-bold leading-snug tracking-tight text-textPrimary',
-  h3: 'font-heading text-xl md:text-2xl font-bold leading-snug text-textPrimary',
-  h4: 'font-heading text-lg md:text-xl font-bold leading-snug text-textPrimary',
-} as const;
+export interface HeadingProps {
+  as?: 'h1' | 'h2' | 'h3' | 'h4';
+  children: React.ReactNode;
+  className?: string;
+}
 
-export function Heading({ as: Tag = 'h2', children, className }: HeadingProps) {
-  return <Tag className={cn(styles[Tag], className)}>{children}</Tag>;
+const defaultSizes = {
+  h1: 'text-4xl md:text-6xl',
+  h2: 'text-3xl md:text-4xl',
+  h3: 'text-2xl md:text-3xl',
+  h4: 'text-xl md:text-2xl',
+};
+
+export default function Heading({ as: Tag = 'h2', children, className }: HeadingProps) {
+  return (
+    <Tag
+      className={cn(
+        'font-heading font-bold text-primary leading-tight tracking-tight',
+        defaultSizes[Tag],
+        className
+      )}
+    >
+      {children}
+    </Tag>
+  );
 }
