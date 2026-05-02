@@ -1,0 +1,8 @@
+<!-- detachable handle -->
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#F3EFE8"/>
+  <path d="M40 140 Q40 60 100 60 Q160 60 160 140" fill="none" stroke="#8B6347" stroke-width="12" stroke-linecap="round" stroke-dasharray="8 4"/>
+  <circle cx="40" cy="140" r="8" fill="#B08968"/>
+  <circle cx="160" cy="140" r="8" fill="#B08968"/>
+  <text x="100" y="185" font-family="serif" font-size="10" fill="#7F5539" text-anchor="middle">脅着式</text>
+</svg>

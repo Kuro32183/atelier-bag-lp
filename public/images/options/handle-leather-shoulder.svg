@@ -1,0 +1,6 @@
+<!-- leather shoulder handle -->
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#F3EFE8"/>
+  <path d="M30 150 Q30 50 100 50 Q170 50 170 150" fill="none" stroke="#8B6347" stroke-width="12" stroke-linecap="round"/>
+  <text x="100" y="185" font-family="serif" font-size="10" fill="#7F5539" text-anchor="middle">本革(肂掛け)</text>
+</svg>

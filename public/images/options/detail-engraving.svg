@@ -1,0 +1,7 @@
+<!-- name engraving -->
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#F3EFE8"/>
+  <rect x="55" y="70" width="90" height="60" rx="4" fill="#8B6347"/>
+  <text x="100" y="106" font-family="serif" font-size="14" fill="#FAF8F4" text-anchor="middle" font-style="italic">Misaki</text>
+  <text x="100" y="165" font-family="serif" font-size="10" fill="#7F5539" text-anchor="middle">名入れ刷印</text>
+</svg>
