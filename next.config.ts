@@ -4,9 +4,9 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [],
     formats: ['image/avif', 'image/webp'],
-  },
-  experimental: {
-    typedRoutes: false,
+    // Allow SVG images from local public/ directory
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 
