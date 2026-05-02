@@ -1,4 +1,4 @@
-// src/app/api/contact/route.ts
+// src/app/api/contact/route.tsx
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { Resend } from 'resend';
@@ -120,7 +120,7 @@ function AutoReplyEmailTemplate({ name }: { name: string }) {
           通常、2ー3営業日以内にお返事いたしますので、しばらくお待ちください。
         </p>
         <div style={{ margin: '32px 0', padding: '20px', background: '#F3EFE8', borderLeft: '3px solid #B08968', borderRadius: '0 8px 8px 0' }}>
-          <p style={{ fontSize: '13px', color: '#7F5539', margin: '0 0 6px', fontWeight: 'bold' }}>LINEでもツドなくゴ相談いただけます</p>
+          <p style={{ fontSize: '13px', color: '#7F5539', margin: '0 0 6px', fontWeight: 'bold' }}>LINEでもお気軽にご相談いただけます</p>
           <p style={{ fontSize: '13px', color: '#555', margin: 0 }}>LINE ID: @atelier ・ Instagram: @atelier_bag</p>
         </div>
         <p style={{ fontSize: '13px', color: '#555', lineHeight: '1.8' }}>

@@ -13,7 +13,7 @@ import ProductInitializer from '@/features/product/components/ProductInitializer
 import type { Metadata } from 'next';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const work = works.find((w) => w.slug === params.slug);
+  const { slug } = await params;
+  const work = works.find((w) => w.slug === slug);
   if (!work) return {};
   return {
     title: `${work.title} | ATELIER`,
@@ -29,8 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function WorkDetailPage({ params }: Props) {
-  const work = works.find((w) => w.slug === params.slug);
+export default async function WorkDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const work = works.find((w) => w.slug === slug);
   if (!work) notFound();
 
   const related = works.filter((w) => w.id !== work.id).slice(0, 3);
