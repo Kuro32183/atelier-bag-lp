@@ -1,6 +1,4 @@
-'use client';
 // src/stores/product.store.ts
-
 import { create } from 'zustand';
 import type { CustomOption } from '@/types/work';
 
@@ -14,33 +12,28 @@ interface ProductState {
 interface ProductActions {
   selectHandle: (option: CustomOption) => void;
   selectLeather: (option: CustomOption) => void;
-  setBasePrice: (price: number) => void;
   calculatePrice: () => void;
-  reset: () => void;
+  reset: (basePrice?: number) => void;
+  initBasePrice: (price: number) => void;
 }
 
-const initialState: ProductState = {
+export const useProductStore = create<ProductState & ProductActions>((set, get) => ({
   selectedHandle: null,
   selectedLeather: null,
   basePrice: 0,
   totalPrice: 0,
-};
 
-export const useProductStore = create<ProductState & ProductActions>((set, get) => ({
-  ...initialState,
+  initBasePrice: (price: number) => {
+    set({ basePrice: price, totalPrice: price });
+  },
 
-  selectHandle: (option) => {
+  selectHandle: (option: CustomOption) => {
     set({ selectedHandle: option });
     get().calculatePrice();
   },
 
-  selectLeather: (option) => {
+  selectLeather: (option: CustomOption) => {
     set({ selectedLeather: option });
-    get().calculatePrice();
-  },
-
-  setBasePrice: (price) => {
-    set({ basePrice: price });
     get().calculatePrice();
   },
 
@@ -53,5 +46,12 @@ export const useProductStore = create<ProductState & ProductActions>((set, get) 
     set({ totalPrice: total });
   },
 
-  reset: () => set(initialState),
+  reset: (basePrice?: number) => {
+    set({
+      selectedHandle: null,
+      selectedLeather: null,
+      basePrice: basePrice ?? 0,
+      totalPrice: basePrice ?? 0,
+    });
+  },
 }));

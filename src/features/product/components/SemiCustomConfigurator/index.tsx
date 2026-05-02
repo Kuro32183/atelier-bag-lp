@@ -1,163 +1,160 @@
-'use client';
 // src/features/product/components/SemiCustomConfigurator/index.tsx
-// Figma: Organisms/SemiCustomConfigurator
+'use client';
 
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import Image from 'next/image';
+import { Check, ArrowRight, MessageCircle } from 'lucide-react';
 import { useProductStore } from '@/stores/product.store';
-import { Button } from '@/components/atoms/Button';
-import { formatPrice } from '@/lib/utils';
-import type { Work } from '@/types/work';
-import { cn } from '@/lib/utils';
+import Button from '@/components/atoms/Button';
+import { formatPrice, formatPriceDiff, cn } from '@/lib/utils';
+import type { Work, CustomOption } from '@/types/work';
+import type { LandingContent } from '@/content/ja/landing';
 
 interface SemiCustomConfiguratorProps {
   work: Work;
 }
 
-export function SemiCustomConfigurator({ work }: SemiCustomConfiguratorProps) {
-  const { selectedHandle, selectedLeather, totalPrice, selectHandle, selectLeather, setBasePrice } =
-    useProductStore();
+interface OptionCardProps {
+  option: CustomOption;
+  selected: boolean;
+  onSelect: () => void;
+}
 
-  useEffect(() => {
-    setBasePrice(work.basePrice);
-    if (work.semiCustom.handles[0]) selectHandle(work.semiCustom.handles[0]);
-    if (work.semiCustom.leatherDetails[0]) selectLeather(work.semiCustom.leatherDetails[0]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [work.id]);
+function OptionCard({ option, selected, onSelect }: OptionCardProps) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className={cn(
+        'relative flex flex-col items-center gap-2 p-3 rounded-md border transition-all duration-fast cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        selected
+          ? 'border-primary bg-primary/5 shadow-sm'
+          : 'border-border-subtle bg-paper hover:border-leather'
+      )}
+      aria-pressed={selected}
+      aria-label={`${option.label} ${formatPriceDiff(option.amount)}`}
+    >
+      {selected && (
+        <span className="absolute top-2 right-2 w-5 h-5 bg-primary text-paper rounded-full flex items-center justify-center">
+          <Check className="w-3 h-3" aria-hidden />
+        </span>
+      )}
+      <div className="relative w-16 h-16 rounded-sm bg-linen overflow-hidden">
+        <Image
+          src={option.image}
+          alt={option.label}
+          fill
+          className="object-cover"
+          sizes="64px"
+        />
+      </div>
+      <p className="text-xs font-body font-medium text-primary text-center leading-tight">
+        {option.label}
+      </p>
+      <p className="text-xs text-leather font-body">{formatPriceDiff(option.amount)}</p>
+    </button>
+  );
+}
+
+export default function SemiCustomConfigurator({ work }: SemiCustomConfiguratorProps) {
+  const {
+    selectedHandle,
+    selectedLeather,
+    totalPrice,
+    selectHandle,
+    selectLeather,
+  } = useProductStore();
 
   return (
-    <div className="space-y-8">
+    <div className="bg-paper border border-border-subtle rounded-lg p-6 space-y-8">
       {/* STEP 1: Handle */}
-      <div>
-        <p className="font-body text-xs font-medium text-brass tracking-widest mb-3">
-          ❶ 持ち手を選ぶ
-        </p>
+      <section aria-labelledby="step1-title">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="w-6 h-6 rounded-full bg-primary text-paper text-xs font-bold flex items-center justify-center">
+            1
+          </span>
+          <h3 id="step1-title" className="font-heading font-bold text-primary text-base">
+            持ち手を選ぶ
+          </h3>
+        </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {work.semiCustom.handles.map((option) => {
-            const isSelected = selectedHandle?.id === option.id;
-            return (
-              <button
-                key={option.id}
-                onClick={() => selectHandle(option)}
-                className={cn(
-                  'relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-                  isSelected
-                    ? 'border-primary bg-primary/5'
-                    : 'border-borderSubtle bg-paper hover:border-brass'
-                )}
-                aria-pressed={isSelected}
-                aria-label={option.label}
-              >
-                {isSelected && (
-                  <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                    <Check className="w-3 h-3 text-paper" />
-                  </div>
-                )}
-                <div className="w-12 h-12 bg-linen rounded-md flex items-center justify-center">
-                  <span className="text-2xl">👜</span>
-                </div>
-                <div className="text-center">
-                  <p className="font-body text-xs font-medium text-textPrimary">{option.label}</p>
-                  <p className="font-body text-xs text-brass">
-                    {option.amount === 0 ? '±¥0' : `+${formatPrice(option.amount)}`}
-                  </p>
-                </div>
-              </button>
-            );
-          })}
+          {work.semiCustom.handles.map((option) => (
+            <OptionCard
+              key={option.id}
+              option={option}
+              selected={selectedHandle?.id === option.id}
+              onSelect={() => selectHandle(option)}
+            />
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* STEP 2: Leather Detail */}
-      <div>
-        <p className="font-body text-xs font-medium text-brass tracking-widest mb-3">
-          ❷ 革細工を追加する
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {work.semiCustom.leatherDetails.map((option) => {
-            const isSelected = selectedLeather?.id === option.id;
-            return (
-              <button
-                key={option.id}
-                onClick={() => selectLeather(option)}
-                className={cn(
-                  'relative flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
-                  isSelected
-                    ? 'border-primary bg-primary/5'
-                    : 'border-borderSubtle bg-paper hover:border-brass'
-                )}
-                aria-pressed={isSelected}
-                aria-label={option.label}
-              >
-                {isSelected && (
-                  <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                    <Check className="w-3 h-3 text-paper" />
-                  </div>
-                )}
-                <div className="w-10 h-10 bg-linen rounded-md flex items-center justify-center">
-                  <span className="text-xl">✿</span>
-                </div>
-                <div className="text-center">
-                  <p className="font-body text-xs font-medium text-textPrimary">{option.label}</p>
-                  <p className="font-body text-xs text-brass">
-                    {option.amount === 0 ? '±¥0' : `+${formatPrice(option.amount)}`}
-                  </p>
-                </div>
-              </button>
-            );
-          })}
+      {/* STEP 2: Leather detail */}
+      <section aria-labelledby="step2-title">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="w-6 h-6 rounded-full bg-primary text-paper text-xs font-bold flex items-center justify-center">
+            2
+          </span>
+          <h3 id="step2-title" className="font-heading font-bold text-primary text-base">
+            革細工を追加する
+          </h3>
         </div>
-      </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {work.semiCustom.leatherDetails.map((option) => (
+            <OptionCard
+              key={option.id}
+              option={option}
+              selected={selectedLeather?.id === option.id}
+              onSelect={() => selectLeather(option)}
+            />
+          ))}
+        </div>
+      </section>
 
-      {/* STEP 3: Price Breakdown */}
-      <div className="bg-linen rounded-lg p-5 space-y-2">
-        <p className="font-body text-xs font-medium text-brass tracking-widest mb-3">
-          ❸ 価格シミュレーション
-        </p>
-        <div className="space-y-1.5 text-sm font-body">
-          <div className="flex justify-between text-textPrimary/70">
+      {/* STEP 3: Price */}
+      <section aria-labelledby="step3-title" className="bg-linen rounded-md p-5">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="w-6 h-6 rounded-full bg-primary text-paper text-xs font-bold flex items-center justify-center">
+            3
+          </span>
+          <h3 id="step3-title" className="font-heading font-bold text-primary text-base">
+            価格シミュレーション
+          </h3>
+        </div>
+        <div className="space-y-2 text-sm">
+          <div className="flex justify-between text-text-primary/70">
             <span>基本価格</span>
             <span>{formatPrice(work.basePrice)}</span>
           </div>
           {selectedHandle && selectedHandle.amount > 0 && (
-            <div className="flex justify-between text-textPrimary/70">
-              <span>{selectedHandle.label}</span>
-              <span>+{formatPrice(selectedHandle.amount)}</span>
+            <div className="flex justify-between text-text-primary/70">
+              <span>持ち手（{selectedHandle.label}\uff09</span>
+              <span>{formatPriceDiff(selectedHandle.amount)}</span>
             </div>
           )}
           {selectedLeather && selectedLeather.amount > 0 && (
-            <div className="flex justify-between text-textPrimary/70">
-              <span>{selectedLeather.label}</span>
-              <span>+{formatPrice(selectedLeather.amount)}</span>
+            <div className="flex justify-between text-text-primary/70">
+              <span>革細工（{selectedLeather.label}\uff09</span>
+              <span>{formatPriceDiff(selectedLeather.amount)}</span>
             </div>
           )}
-          <div className="border-t border-borderSubtle pt-2 flex justify-between font-bold text-textPrimary text-base">
+          <div className="flex justify-between font-bold text-primary text-lg pt-3 border-t border-border-subtle">
             <span>合計（税込）</span>
-            <motion.span
-              key={totalPrice}
-              initial={{ opacity: 0, y: -4 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-primary text-xl"
-            >
-              {formatPrice(totalPrice)}
-            </motion.span>
+            <span>{formatPrice(totalPrice)}</span>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* STEP 4: CTA */}
-      <div className="space-y-3">
-        <Button variant="cta" size="lg" href="/#contact" fullWidth>
-          この内容で相談する →
+      <section aria-label="相談CTA" className="space-y-3">
+        <Button variant="cta" size="lg" fullWidth href="/#contact">
+          この内容で相談する
+          <ArrowRight className="w-4 h-4" aria-hidden />
         </Button>
-        <Button variant="secondary" size="md" href={landing_line} fullWidth>
-          <span>💬</span> LINEで気軽に相談する
+        <Button variant="secondary" size="lg" fullWidth href="https://line.me/R/ti/p/@atelier">
+          <MessageCircle className="w-4 h-4" aria-hidden />
+          LINEで気軽に相談する
         </Button>
-      </div>
+      </section>
     </div>
   );
 }
-
-const landing_line = 'https://line.me/R/ti/p/@atelier';
