@@ -1,57 +1,59 @@
 // src/components/organisms/Footer/index.tsx
-// Figma: Organisms/Footer
-
 import Link from 'next/link';
-import { ShoppingBag, Instagram } from 'lucide-react';
-import { landing } from '@/content/ja/landing';
+import { Instagram } from 'lucide-react';
+import type { LandingContent } from '@/content/ja/landing';
 
-export function Footer() {
-  const content = landing.footer;
+interface FooterProps {
+  content: LandingContent['footer'];
+}
+
+export default function Footer({ content }: FooterProps) {
   return (
-    <footer className="bg-primary text-paper/70">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-paper/10">
+    <footer className="bg-primary text-paper/60 pt-16 pb-8" role="contentinfo">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-paper/10">
           {/* Brand */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <ShoppingBag className="w-5 h-5 text-brass" />
-              <span className="font-latin font-bold text-xl tracking-widest text-paper">
-                {content.brand}
-              </span>
-            </div>
-            <p className="font-body text-sm text-paper/50">{content.tagline}</p>
+          <div>
+            <p className="font-latin font-bold text-xl text-paper tracking-widest mb-2">
+              {content.brand}
+            </p>
+            <p className="text-xs text-paper/40 tracking-widest mb-4">{content.tagline}</p>
           </div>
 
-          {/* Nav */}
-          <nav className="space-y-2" aria-label="フッターナビゲーション">
-            {content.links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block font-body text-sm hover:text-paper transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+          {/* Links */}
+          <nav aria-label="フッターナビゲーション">
+            <ul className="space-y-3">
+              {content.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-body hover:text-paper transition-colors duration-fast"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
           {/* Social */}
-          <div className="space-y-4">
-            <a
-              href={content.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-body text-sm hover:text-paper transition-colors"
-              aria-label="Instagramを開く"
-            >
-              <Instagram className="w-4 h-4" />
-              Instagram
-            </a>
+          <div>
+            <p className="text-xs tracking-wider uppercase font-latin mb-4">Follow</p>
+            <div className="flex gap-4">
+              <a
+                href={content.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-paper/50 hover:text-paper transition-colors duration-fast"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" aria-hidden />
+              </a>
+            </div>
           </div>
         </div>
-        <p className="pt-6 font-body text-xs text-paper/30 text-center">
-          {content.copyright}
-        </p>
+
+        <p className="text-xs text-center text-paper/30 pt-8">{content.copyright}</p>
       </div>
     </footer>
   );
