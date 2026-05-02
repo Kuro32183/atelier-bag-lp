@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#e8e0d5"/>
+  <path d="M250 180 L250 440 Q250 460 270 460 L530 460 Q550 460 550 440 L550 180 Z" fill="#9a7055"/>
+  <path d="M300 180 Q300 130 350 130 Q400 130 400 180" fill="none" stroke="#7a5535" stroke-width="12" stroke-linecap="round"/>
+  <text x="400" y="550" font-family="serif" font-size="16" fill="#102A43" opacity="0.4" text-anchor="middle">Back View</text>
+</svg>

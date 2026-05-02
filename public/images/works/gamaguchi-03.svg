@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#2a1f14"/>
+  <rect x="200" y="130" width="400" height="300" rx="20" fill="#3d2c1e"/>
+  <rect x="370" y="115" width="60" height="25" rx="12" fill="#B08968"/>
+  <!-- interior shot -->
+  <rect x="230" y="160" width="340" height="240" rx="10" fill="#F3EFE8" opacity="0.9"/>
+  <text x="400" y="295" font-family="serif" font-size="14" fill="#7F5539" text-anchor="middle">内布: コットン(ベージュ)</text>
+  <text x="400" y="530" font-family="serif" font-size="16" fill="#FAF8F4" opacity="0.4" text-anchor="middle">Interior</text>
+</svg>
