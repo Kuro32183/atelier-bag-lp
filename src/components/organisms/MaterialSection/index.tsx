@@ -1,35 +1,31 @@
-// src/components/organisms/CraftProofSection/index.tsx
-import ProofCard from '@/components/molecules/ProofCard';
+// src/components/organisms/MaterialSection/index.tsx
+import MaterialCard from '@/components/molecules/MaterialCard';
 import SectionTitle from '@/components/molecules/SectionTitle';
 import type { LandingContent } from '@/content/ja/landing';
+import type { Material } from '@/types/common';
 
-interface CraftProofSectionProps {
-  content: LandingContent['craftProof'];
+interface MaterialSectionProps {
+  content: LandingContent['materials'];
+  items: Material[];
 }
 
-export default function CraftProofSection({ content }: CraftProofSectionProps) {
+export default function MaterialSection({ content, items }: MaterialSectionProps) {
   return (
     <section
-      id="craft"
+      id="materials"
       className="py-20 md:py-28 bg-linen"
-      aria-labelledby="craft-title"
+      aria-labelledby="materials-title"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           eyebrow={content.sectionLabel}
           title={content.title}
           subtitle={content.subtitle}
-          center
           className="mb-12"
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {content.cards.map((card) => (
-            <ProofCard
-              key={card.title}
-              title={card.title}
-              body={card.body}
-              icon={card.icon}
-            />
+          {items.map((material) => (
+            <MaterialCard key={material.id} material={material} />
           ))}
         </div>
       </div>

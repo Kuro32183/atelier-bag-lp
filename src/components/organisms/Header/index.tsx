@@ -1,94 +1,117 @@
-'use client';
 // src/components/organisms/Header/index.tsx
-// Figma: Organisms/Header
+'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
-import { Button } from '@/components/atoms/Button';
-import { landing } from '@/content/ja/landing';
+import Button from '@/components/atoms/Button';
+import type { LandingContent } from '@/content/ja/landing';
 import { cn } from '@/lib/utils';
 
-export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const nav = landing.nav;
+interface HeaderProps {
+  content: LandingContent['nav'];
+}
+
+export default function Header({ content }: HeaderProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 32);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
-    { label: nav.works, href: '/works' },
-    { label: nav.materials, href: '/#materials' },
-    { label: nav.process, href: '/#process' },
-    { label: nav.about, href: '/#profile' },
-    { label: nav.faq, href: '/#faq' },
+    { label: content.works, href: '/#works' },
+    { label: content.materials, href: '/#materials' },
+    { label: content.process, href: '/#process' },
+    { label: content.about, href: '/#about' },
+    { label: content.faq, href: '/#faq' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-borderSubtle">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <ShoppingBag className="w-5 h-5 text-primary" />
-          <span className="font-latin font-bold text-xl tracking-widest text-primary">
+    <header
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-base',
+        isScrolled
+          ? 'bg-paper/95 backdrop-blur-sm border-b border-border-subtle shadow-sm'
+          : 'bg-transparent'
+      )}
+      role="banner"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="font-latin font-bold text-xl text-primary tracking-widest hover:text-leather transition-colors duration-fast"
+            aria-label="ATELIER ホーム"
+          >
             ATELIER
-          </span>
-          <span className="hidden md:block font-body text-xs text-textPrimary/40 ml-1">
-            Handmade Bag & Atelier
-          </span>
-        </Link>
+          </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6" aria-label="メインナビゲーション">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-body text-sm text-textPrimary/70 hover:text-primary transition-colors duration-fast"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8" aria-label="メインナビゲーション">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-body text-sm text-primary/70 hover:text-primary transition-colors duration-fast"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-        {/* CTA */}
-        <div className="hidden md:flex">
-          <Button variant="primary" size="sm" href="/#contact">
-            {nav.cta}
-          </Button>
+          {/* CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <Button variant="cta" size="sm" href="/#contact">
+              {content.cta}
+            </Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            className="md:hidden p-2 text-primary hover:text-leather transition-colors duration-fast focus-visible:outline-none"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
 
-        {/* Mobile menu toggle */}
-        <button
-          className="md:hidden p-2 rounded-sm text-primary hover:bg-linen transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'メニューを閉じる' : 'メニューを開く'}
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-      </div>
-
-      {/* Mobile drawer */}
-      <div
-        className={cn(
-          'md:hidden bg-paper border-t border-borderSubtle overflow-hidden transition-all duration-base',
-          isOpen ? 'max-h-96' : 'max-h-0'
+        {/* Mobile Nav */}
+        {isMenuOpen && (
+          <nav
+            className="md:hidden border-t border-border-subtle pb-4"
+            aria-label="モバイルナビゲーション"
+          >
+            <div className="flex flex-col gap-1 pt-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-body text-sm text-primary/70 hover:text-primary py-3 px-1 transition-colors duration-fast"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Button
+                variant="cta"
+                size="md"
+                href="/#contact"
+                fullWidth
+                className="mt-3"
+              >
+                {content.cta}
+              </Button>
+            </div>
+          </nav>
         )}
-        aria-hidden={!isOpen}
-      >
-        <nav className="flex flex-col px-4 py-4 gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-body text-base text-textPrimary/80 hover:text-primary py-1"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Button variant="primary" size="sm" href="/#contact" fullWidth>
-            {nav.cta}
-          </Button>
-        </nav>
       </div>
     </header>
   );
