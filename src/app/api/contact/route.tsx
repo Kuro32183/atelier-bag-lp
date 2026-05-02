@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// NOTE: Resend is initialized inside the handler so that
+// process.env.RESEND_API_KEY is not evaluated at module load time
+// (which would crash during `next build` static analysis).
 
 const schema = z.object({
   name: z.string().min(2),
@@ -14,6 +16,8 @@ const schema = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
     const body = await req.json();
     const data = schema.parse(body);
