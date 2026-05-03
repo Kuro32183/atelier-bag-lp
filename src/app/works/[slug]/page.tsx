@@ -1,5 +1,5 @@
 // src/app/works/[slug]/page.tsx
-// Next.js 15 App Router: params are now Promise-based
+// Next.js 15: params is Promise-based
 import { notFound } from 'next/navigation';
 import { works } from '@/data/works';
 import { landing } from '@/content/ja/landing';
@@ -90,7 +90,6 @@ export default async function WorkDetailPage(
                   ))}
                 </dl>
               </div>
-
               <SemiCustomConfigurator work={work} />
             </div>
           </div>

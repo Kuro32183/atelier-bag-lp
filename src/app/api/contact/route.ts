@@ -23,20 +23,28 @@ export async function POST(req: NextRequest) {
         to: [process.env.CONTACT_EMAIL ?? 'your@email.com'],
         replyTo: data.email,
         subject: `[お問い合わせ] ${data.category} — ${data.name} 様`,
-        text: `お名前: ${data.name}\nメール: ${data.email}\nInstagram: ${data.instagram ?? '未記入'}\nカテゴリ: ${data.category}\n\nメッセージ:\n${data.message}`,
+        text: `お名前: ${data.name}\nメール: ${data.email}\nInstagram: ${
+          data.instagram ?? '未記入'
+        }\nカテゴリ: ${data.category}\n\nメッセージ:\n${data.message}`,
       });
       if (error) {
         console.error('[Resend error]', error);
         return NextResponse.json({ error: 'Mail delivery failed' }, { status: 500 });
       }
     } else {
-      console.info('[Contact Form] RESEND_API_KEY not set, skipping email', { name: data.name, category: data.category });
+      console.info('[Contact Form] RESEND_API_KEY not set, skipping email', {
+        name: data.name,
+        category: data.category,
+      });
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: 'Invalid data', details: error.errors }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Invalid data', details: error.errors },
+        { status: 400 }
+      );
     }
     console.error('[Contact API error]', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
