@@ -13,7 +13,7 @@ export const landing = {
   },
 
   hero: {
-    eyebrow: 'Handmade Bag & Atelier',
+    eyebrow: "手作り工房『こみち』",
     title: '一点ものの鞄を、\nあなたのために。',
     subtitle: '素材を選び、形を決め、あなただけの鞄を仕立てる。\n職人が手がける一点物のアトリエ。',
     cta: '作品を見る',
@@ -49,7 +49,7 @@ export const landing = {
     title: '作家の想い',
     body: '鞄は毎日手にするもの。だからこそ、素材の選定から縫い目の一本一本まで、妥協なく向き合い続けます。使うほどに愛着が深まる、そんな一点を届けたい。',
     subBody: '大量生産品では味わえない、手仕事ならではの温もりと存在感。あなたの日常に寄り添い、時を重ねるほど輝きを増す鞄を。',
-    signature: '田中 美咲',
+    signature: '手作り工房『こみち』',
   },
 
   materials: {
@@ -136,10 +136,10 @@ export const landing = {
   profile: {
     sectionLabel: 'PROFILE',
     title: '作家プロフィール',
-    name: '田中 美咲',
-    brandName: 'ATELIER',
+    name: "手作り工房『こみち』",
+    brandName: "手作り工房『こみち』",
     startedYear: 2018,
-    biography: '東京都出身。服飾専門学校卒業後、国内有名革メーカーに勤務。2018年に独立し、ハンドメイド鞄ブランド「ATELIER」を立ち上げる。着物にも合わせやすいがま口スタイルを中心に、日常使いできる上質な一点物を制作。',
+    biography: "東京都出身。服飾専門学校卒業後、国内有名革メーカーに勤務。2018年に独立し、ハンドメイド鞄工房「こみち」を立ち上げる。着物にも合わせやすいがま口スタイルを中心に、日常使いできる上質な一点物を制作。",
     philosophy: '「毎日手にするものだからこそ、本物を」をコンセプトに、素材と製法にこだわった鞄作りを続けています。',
     profileImage: '/images/profile/artisan.jpg',
     instagram: 'https://instagram.com/atelier_bag',
@@ -180,7 +180,7 @@ export const landing = {
     instagramCta: 'Instagramでみる',
     form: {
       name: 'お名前',
-      namePlaceholder: '田中 美咲',
+      namePlaceholder: 'お名前を入力してください',
       email: 'メールアドレス',
       emailPlaceholder: 'example@mail.com',
       instagram: 'Instagramアカウント（任意）',
@@ -197,9 +197,9 @@ export const landing = {
   },
 
   footer: {
-    brand: 'ATELIER',
+    brand: "手作り工房『こみち』",
     tagline: 'Handmade Bag & Atelier',
-    copyright: '© 2024 ATELIER. All rights reserved.',
+    copyright: "© 2024 手作り工房『こみち』. All rights reserved.",
     links: [
       { label: '作品一覧', href: '/works' },
       { label: 'オーダーの流れ', href: '/#process' },
