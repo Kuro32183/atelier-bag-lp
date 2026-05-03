@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install --legacy-peer-deps --prefer-online --cache /tmp/npm-cache-bust-v3",
+  "installCommand": "npm install --legacy-peer-deps && node -e \"const v=require('./node_modules/next/package.json').version;console.log('next version:',v);if(v==='15.0.0')process.exit(1)\"",
   "buildCommand": "npm run build",
   "framework": "nextjs",
   "cleanUrls": true
