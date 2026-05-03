@@ -9,7 +9,7 @@ interface ProductInitializerProps {
 }
 
 export default function ProductInitializer({ basePrice }: ProductInitializerProps) {
-  const { initBasePrice } = useProductStore();
+  const initBasePrice = useProductStore((state) => state.initBasePrice);
 
   useEffect(() => {
     initBasePrice(basePrice);

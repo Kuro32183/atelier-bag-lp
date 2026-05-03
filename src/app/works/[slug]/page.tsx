@@ -1,4 +1,5 @@
 // src/app/works/[slug]/page.tsx
+// Next.js 15 App Router: params are now Promise-based
 import { notFound } from 'next/navigation';
 import { works } from '@/data/works';
 import { landing } from '@/content/ja/landing';
@@ -12,19 +13,14 @@ import ProductGallery from '@/features/product/components/ProductGallery';
 import ProductInitializer from '@/features/product/components/ProductInitializer';
 import type { Metadata } from 'next';
 
-// Next.js 15: params is a Promise
-type Params = { slug: string };
-
 export async function generateStaticParams() {
   return works.map((w) => ({ slug: w.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata(
+  props: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await props.params;
   const work = works.find((w) => w.slug === slug);
   if (!work) return {};
   return {
@@ -33,12 +29,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function WorkDetailPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
-  const { slug } = await params;
+export default async function WorkDetailPage(
+  props: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await props.params;
   const work = works.find((w) => w.slug === slug);
   if (!work) notFound();
 
@@ -48,10 +42,8 @@ export default async function WorkDetailPage({
     <>
       <Header content={landing.nav} />
       <main className="pt-20">
-        {/* Initialize store */}
         <ProductInitializer basePrice={work.basePrice} />
 
-        {/* Breadcrumb */}
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4" aria-label="パンくず">
           <ol className="flex items-center gap-2 text-xs text-text-primary/50 font-body">
             <li><a href="/" className="hover:text-primary transition-colors">HOME</a></li>
@@ -62,10 +54,8 @@ export default async function WorkDetailPage({
           </ol>
         </nav>
 
-        {/* Product section */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left: Gallery + Size */}
             <div className="space-y-6">
               <ProductGallery images={work.images} title={work.title} />
               <SizeComparison
@@ -75,7 +65,6 @@ export default async function WorkDetailPage({
               />
             </div>
 
-            {/* Right: Info + Configurator */}
             <div className="space-y-6">
               <div>
                 <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-primary text-paper rounded-sm mb-3">
@@ -107,7 +96,6 @@ export default async function WorkDetailPage({
           </div>
         </section>
 
-        {/* Related works */}
         {related.length > 0 && (
           <section className="bg-linen py-16">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

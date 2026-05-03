@@ -7,7 +7,6 @@ import { useProductStore } from '@/stores/product.store';
 import Button from '@/components/atoms/Button';
 import { formatPrice, formatPriceDiff, cn } from '@/lib/utils';
 import type { Work, CustomOption } from '@/types/work';
-import type { LandingContent } from '@/content/ja/landing';
 
 interface SemiCustomConfiguratorProps {
   work: Work;
@@ -127,13 +126,13 @@ export default function SemiCustomConfigurator({ work }: SemiCustomConfiguratorP
           </div>
           {selectedHandle && selectedHandle.amount > 0 && (
             <div className="flex justify-between text-text-primary/70">
-              <span>持ち手（{selectedHandle.label}\uff09</span>
+              <span>持ち手（{selectedHandle.label}）</span>
               <span>{formatPriceDiff(selectedHandle.amount)}</span>
             </div>
           )}
           {selectedLeather && selectedLeather.amount > 0 && (
             <div className="flex justify-between text-text-primary/70">
-              <span>革細工（{selectedLeather.label}\uff09</span>
+              <span>革細工（{selectedLeather.label}）</span>
               <span>{formatPriceDiff(selectedLeather.amount)}</span>
             </div>
           )}
@@ -144,7 +143,7 @@ export default function SemiCustomConfigurator({ work }: SemiCustomConfiguratorP
         </div>
       </section>
 
-      {/* STEP 4: CTA */}
+      {/* CTA */}
       <section aria-label="相談CTA" className="space-y-3">
         <Button variant="cta" size="lg" fullWidth href="/#contact">
           この内容で相談する
