@@ -1,3 +1,3 @@
-// next.config.js (CommonJS) is the active config.
-// This file is intentionally a no-op stub to prevent conflicts.
+// THIS FILE IS INTENTIONALLY EMPTY
+// Active config is next.config.js
 export {};
