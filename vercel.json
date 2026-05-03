@@ -1,1 +1,6 @@
-{\n  \"installCommand\": \"npm install --legacy-peer-deps\",\n  \"buildCommand\": \"npm run build\",\n  \"framework\": \"nextjs\",\n  \"cleanUrls\": true\n}\n
+{
+  "installCommand": "npm install --legacy-peer-deps --prefer-online --cache /tmp/npm-cache-bust-v3",
+  "buildCommand": "npm run build",
+  "framework": "nextjs",
+  "cleanUrls": true
+}
