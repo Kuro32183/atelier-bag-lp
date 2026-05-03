@@ -1,6 +1,5 @@
 // src/content/ja/landing.ts
 // コンテンツ層 — 全UIテキストはここから取得する
-// 使用方法: <HeroSection content={landing.hero} />
 
 export const landing = {
   nav: {
@@ -21,65 +20,42 @@ export const landing = {
     scrollLabel: 'SCROLL',
   },
 
-  craftProof: {
-    sectionLabel: 'CRAFT',
-    title: '一点ずつ丁寧に製作',
-    subtitle: 'すべての作品は私が\nデザインから仕上げまで手がけます。',
-    cards: [
-      {
-        title: '手縫い仕立て',
-        body: '機械では再現できない、手縫いならではの\n丁寧な縫い目と強度を実現します。',
-        icon: 'needle',
-      },
-      {
-        title: '国産本革',
-        body: '厳選した国産タンナーの本革のみを使用。\n経年変化でさらに美しく育ちます。',
-        icon: 'leaf',
-      },
-      {
-        title: '完全受注制作',
-        body: '在庫は持たず、ご注文をいただいてから\n一から制作いたします。',
-        icon: 'clock',
-      },
-    ],
-  },
-
   philosophy: {
     sectionLabel: 'PHILOSOPHY',
     title: '作家の想い',
     body: '鞄は毎日手にするもの。だからこそ、素材の選定から縫い目の一本一本まで、妥協なく向き合い続けます。使うほどに愛着が深まる、そんな一点を届けたい。',
     subBody: '大量生産品では味わえない、手仕事ならではの温もりと存在感。あなたの日常に寄り添い、時を重ねるほど輝きを増す鞄を。',
-    signature: '手作り工房『こみち』',
+    signature: "手作り工房『こみち』",
   },
 
   materials: {
-    sectionLabel: 'MATERIAL',
-    title: '素材へのこだわり',
-    subtitle: '厳選した素材だけを使用します',
-    items: [
+    sectionLabel: 'MATERIAL & CRAFT',
+    title: '素材と仕立てへのこだわり',
+    subtitle: '選び抜いた素材を、一点ずつ丁寧に仕立てます',
+    cards: [
+      {
+        id: 'fabric',
+        title: 'オリジナルの布',
+        origin: '国産・こみちセレクト',
+        body: '着物地・帯地・和柄リネンなど、こみちが一枚一枚選び抜いたオリジナル生地を使用。どこにもない組み合わせが、あなただけの一点を生み出します。',
+        icon: 'scissors',
+        textureImage: '/images/materials/fabric.jpg',
+      },
       {
         id: 'leather',
-        name: '栃木レザー',
-        origin: '栃木県',
-        description: '創業100年超の老舗タンナー・栃木レザーが誇る植物タンニン鞣し革。丈夫で経年変化が美しく、使うほどに深みが増します。',
+        title: '播州たつのの革',
+        origin: '兵庫県たつの市',
+        body: '国内有数の皮革産地・播州たつので育まれた本革を使用。なめらかな手触りと経年変化の美しさが、使うほどに鞄を育てていきます。',
+        icon: 'leaf',
         textureImage: '/images/materials/leather.jpg',
-        durabilityScore: 5,
       },
       {
-        id: 'brass',
-        name: '真鍮金具',
-        origin: '日本製',
-        description: '職人が丁寧に磨き上げた真鍮製の金具。経年とともに独特の風合いを纏い、鞄に貫禄を加えます。',
-        textureImage: '/images/materials/brass.jpg',
-        durabilityScore: 4,
-      },
-      {
-        id: 'linen',
-        name: '国産リネン',
-        origin: '岡山県',
-        description: '岡山の老舗機屋が織り上げる高密度リネン。軽くて丈夫、通気性も抜群で内布として最適です。',
-        textureImage: '/images/materials/linen.jpg',
-        durabilityScore: 4,
+        id: 'order',
+        title: 'オーダー製作も可能',
+        origin: 'セミ／フルオーダー対応',
+        body: '既製のデザインをベースにカスタマイズするセミオーダーから、布・革・金具・サイズをゼロから決めるフルオーダーまで承ります。世界でひとつの鞄を一緒に作りましょう。',
+        icon: 'pencil',
+        textureImage: '/images/materials/order.jpg',
       },
     ],
   },
@@ -139,10 +115,10 @@ export const landing = {
     name: "手作り工房『こみち』",
     brandName: "手作り工房『こみち』",
     startedYear: 2018,
-    biography: "東京都出身。服飾専門学校卒業後、国内有名革メーカーに勤務。2018年に独立し、ハンドメイド鞄工房「こみち」を立ち上げる。着物にも合わせやすいがま口スタイルを中心に、日常使いできる上質な一点物を制作。",
+    biography: "播州たつのを拠点に、着物にも合わせやすいがま口スタイルを中心とした手作り鞄を制作。オリジナル生地×播州革の組み合わせで、日常使いできる上質な一点ものをお届けしています。",
     philosophy: '「毎日手にするものだからこそ、本物を」をコンセプトに、素材と製法にこだわった鞄作りを続けています。',
     profileImage: '/images/profile/artisan.jpg',
-    instagram: 'https://instagram.com/atelier_bag',
+    instagram: 'https://www.instagram.com/koubou_komichi/',
   },
 
   faq: {
@@ -207,7 +183,7 @@ export const landing = {
       { label: 'お問い合わせ', href: '/#contact' },
     ],
     social: {
-      instagram: 'https://instagram.com/atelier_bag',
+      instagram: 'https://www.instagram.com/koubou_komichi/',
       line: 'https://line.me/R/ti/p/@atelier',
     },
   },

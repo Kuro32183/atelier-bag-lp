@@ -1,9 +1,7 @@
 import { landing } from '@/content/ja/landing';
 import { works } from '@/data/works';
-import { materials } from '@/data/materials';
 import Header from '@/components/organisms/Header';
 import HeroSection from '@/components/organisms/HeroSection';
-import CraftProofSection from '@/components/organisms/CraftProofSection';
 import PhilosophySection from '@/components/organisms/PhilosophySection';
 import MaterialSection from '@/components/organisms/MaterialSection';
 import FeaturedWorksSection from '@/components/organisms/FeaturedWorksSection';
@@ -21,9 +19,8 @@ export default function Home() {
       <Header content={landing.nav} />
       <main>
         <HeroSection content={landing.hero} />
-        <CraftProofSection content={landing.craftProof} />
         <PhilosophySection content={landing.philosophy} />
-        <MaterialSection content={landing.materials} items={materials} />
+        <MaterialSection content={landing.materials} />
         <FeaturedWorksSection content={landing.featuredWorks} works={featuredWorks} />
         <ProcessSection content={landing.process} />
         <FAQSection content={landing.faq} />
