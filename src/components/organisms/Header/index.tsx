@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 import type { LandingContent } from '@/content/ja/landing';
@@ -45,10 +46,16 @@ export default function Header({ content }: HeaderProps) {
           {/* Logo */}
           <Link
             href="/"
-            className="font-latin font-bold text-xl text-primary tracking-widest hover:text-leather transition-colors duration-fast"
-            aria-label="ATELIER ホーム"
+            className="hover:opacity-80 transition-opacity duration-fast"
+            aria-label="手作り工房『こみち』 ホーム"
           >
-            ATELIER
+            <Image
+              src="/images/materials/title.webp"
+              alt="手作り工房『こみち』"
+              width={200}
+              height={50}
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Nav */}

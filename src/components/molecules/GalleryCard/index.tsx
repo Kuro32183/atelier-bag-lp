@@ -19,7 +19,7 @@ export default function GalleryCard({ work, badgeLabel = '一点もの', fromLab
       className="group block bg-paper rounded-md overflow-hidden border border-border-subtle hover:border-leather transition-all duration-base hover:shadow-md"
       aria-label={`${work.title}の詳細を見る`}
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-linen">
+      <div className="relative aspect-square overflow-hidden bg-linen">
         <Image
           src={work.thumbnail}
           alt={work.title}
@@ -31,11 +31,11 @@ export default function GalleryCard({ work, badgeLabel = '一点もの', fromLab
           <Badge variant="default">{badgeLabel}</Badge>
         </div>
       </div>
-      <div className="p-5">
-        <h3 className="font-heading font-bold text-primary text-base mb-1 line-clamp-1">
+      <div className="p-4">
+        <h3 className="font-heading font-bold text-primary text-base mb-2 line-clamp-1">
           {work.title}
         </h3>
-        <div className="flex items-center justify-between mt-2">
+        <div className="flex items-center justify-between mt-3">
           <span className="text-leather font-body text-sm font-medium">
             {fromLabel}{work.basePrice.toLocaleString('ja-JP')}
           </span>
