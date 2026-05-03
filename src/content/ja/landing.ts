@@ -35,23 +35,23 @@ export const landing = {
     cards: [
       {
         id: 'fabric',
-        title: 'オリジナルの布',
-        origin: '国産・こみちセレクト',
-        body: '着物地・帯地・和柄リネンなど、こみちが一枚一枚選び抜いたオリジナル生地を使用。どこにもない組み合わせが、あなただけの一点を生み出します。',
+        title: '布',
+        origin: '前掛け風',
+        body: 'オリジナルデザインの生地を使用。洗っても縮まない生地、色落ちしにくい素材でできております',
         icon: 'scissors',
         textureImage: '/images/materials/fabric.jpg',
       },
       {
         id: 'leather',
-        title: '播州たつのの革',
-        origin: '兵庫県たつの市',
+        title: '革',
+        origin: '播州たつの',
         body: '国内有数の皮革産地・播州たつので育まれた本革を使用。なめらかな手触りと経年変化の美しさが、使うほどに鞄を育てていきます。',
         icon: 'leaf',
         textureImage: '/images/materials/leather.jpg',
       },
       {
         id: 'order',
-        title: 'オーダー製作も可能',
+        title: 'オーダー',
         origin: 'セミ／フルオーダー対応',
         body: '既製のデザインをベースにカスタマイズするセミオーダーから、布・革・金具・サイズをゼロから決めるフルオーダーまで承ります。世界でひとつの鞄を一緒に作りましょう。',
         icon: 'pencil',
@@ -99,7 +99,7 @@ export const landing = {
       {
         step: 3,
         title: '制作・進捗共有',
-        description: '制作期間は約3〜6週間。制作途中の写真をLINEでご共有します。',
+        description: '制作期間は約〇〇週間。制作途中の写真をLINEでご共有します。',
       },
       {
         step: 4,
@@ -131,7 +131,7 @@ export const landing = {
       },
       {
         question: '制作期間はどれくらいかかりますか？',
-        answer: 'セミオーダーは約2〜4週間、フルオーダーは約4〜8週間が目安です。時期によって変動しますので、まずはご相談ください。',
+        answer: 'セミオーダーは約〇〇週間、フルオーダーは約〇〇週間が目安です。時期や受注によって変動しますので、まずはご相談ください。',
       },
       {
         question: '遠方でも注文できますか？',
@@ -139,7 +139,7 @@ export const landing = {
       },
       {
         question: '予算はどれくらい必要ですか？',
-        answer: 'セミオーダーは¥28,000〜、フルオーダーは¥45,000〜となっています。素材やデザインにより異なりますのでお気軽にご相談ください。',
+        answer: 'セミオーダーは¥000〜、フルオーダーは¥000〜となっています。素材やデザインにより異なりますのでお気軽にご相談ください。',
       },
       {
         question: '修理・メンテナンスは対応していますか？',
@@ -174,8 +174,8 @@ export const landing = {
 
   footer: {
     brand: "手作り工房『こみち』",
-    tagline: 'Handmade Bag & Atelier',
-    copyright: "© 2024 手作り工房『こみち』. All rights reserved.",
+    tagline: '',
+    copyright: "© 2026 手作り工房『こみち』. All rights reserved.",
     links: [
       { label: '作品一覧', href: '/works' },
       { label: 'オーダーの流れ', href: '/#process' },
@@ -184,7 +184,7 @@ export const landing = {
     ],
     social: {
       instagram: 'https://www.instagram.com/koubou_komichi/',
-      line: 'https://line.me/R/ti/p/@atelier',
+      line: 'https://qr-official.line.me/gs/M_778iaatf_GW.png?oat_content=qr',
     },
   },
 
