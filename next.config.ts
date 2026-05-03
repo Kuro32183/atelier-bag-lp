@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
     // ESLint is run separately in CI; skip during `next build`
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    // Type errors are checked separately via `npm run type-check`
+    ignoreBuildErrors: true,
+  },
   images: {
     remotePatterns: [],
     formats: ['image/avif', 'image/webp'],
