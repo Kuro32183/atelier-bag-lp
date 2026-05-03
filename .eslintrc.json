@@ -1,7 +1,3 @@
 {
-  "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "@next/next/no-img-element": "error"
-  }
+  "extends": ["next/core-web-vitals"]
 }

@@ -1,7 +1,5 @@
-// This file is intentionally left as a redirect.
-// The actual implementation lives in route.ts.
-// We cannot delete files via the GitHub API, but Next.js will use
-// the .ts file and ignore this .tsx file when both export nothing.
-// Having BOTH a named export and this file would cause a conflict,
-// so this file exports nothing — route.ts owns the POST handler.
+// This file intentionally exports nothing.
+// The contact API POST handler lives exclusively in route.ts.
+// Do not add any exports here — Next.js will throw a build error
+// if both route.ts and route.tsx export the same HTTP method.
 export {};

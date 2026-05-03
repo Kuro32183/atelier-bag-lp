@@ -12,15 +12,18 @@ import ProductGallery from '@/features/product/components/ProductGallery';
 import ProductInitializer from '@/features/product/components/ProductInitializer';
 import type { Metadata } from 'next';
 
-interface Props {
-  params: Promise<{ slug: string }>;
-}
+// Next.js 15: params is a Promise
+type Params = { slug: string };
 
 export async function generateStaticParams() {
   return works.map((w) => ({ slug: w.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const work = works.find((w) => w.slug === slug);
   if (!work) return {};
@@ -30,7 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function WorkDetailPage({ params }: Props) {
+export default async function WorkDetailPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { slug } = await params;
   const work = works.find((w) => w.slug === slug);
   if (!work) notFound();
@@ -81,12 +88,12 @@ export default async function WorkDetailPage({ params }: Props) {
                   {work.description}
                 </p>
                 <dl className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
-                  {[
+                  {([
                     ['素材', work.material],
                     ['内布', work.lining],
                     ['重量', `約${work.weight}g`],
                     ['生産地', work.origin],
-                  ].map(([label, value]) => (
+                  ] as [string, string][]).map(([label, value]) => (
                     <div key={label}>
                       <dt className="text-text-primary/40 text-xs mb-0.5">{label}</dt>
                       <dd className="text-primary font-medium">{value}</dd>
