@@ -1,5 +1,4 @@
 // src/components/organisms/HeroSection/index.tsx
-import Link from 'next/link';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 import type { LandingContent } from '@/content/ja/landing';
@@ -35,24 +34,35 @@ export default function HeroSection({ content }: HeroSectionProps) {
         aria-hidden
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Eyebrow */}
-        <p className="font-latin text-xs tracking-[0.3em] uppercase text-paper/50 mb-6">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+
+        {/* Eyebrow — 工房名はしっかり視認できるサイズに */}
+        <p className="font-body text-sm sm:text-base tracking-[0.25em] text-paper/80 mb-5 sm:mb-6">
           {content.eyebrow}
         </p>
 
-        {/* Title */}
-        <h1 className="font-heading font-bold text-paper text-5xl md:text-7xl lg:text-8xl leading-tight tracking-tight mb-8 whitespace-pre-line">
+        {/* Main title */}
+        <h1
+          className="font-heading font-bold text-paper leading-tight tracking-tight mb-6 sm:mb-8
+                     text-[2.75rem] sm:text-6xl md:text-7xl lg:text-8xl
+                     whitespace-pre-line"
+        >
           {content.title}
         </h1>
 
-        {/* Subtitle */}
-        <p className="text-paper/70 text-base md:text-lg leading-relaxed mb-12 max-w-xl mx-auto whitespace-pre-line">
-          {content.subtitle}
+        {/* Subtitle
+            \n を取り除いてコンポーネント側で自然折り返しに委ねる。
+            max-w-2xl + mx-auto でどのデバイスでも読みやすい行長をキープ。 */}
+        <p
+          className="text-paper/70 leading-[1.9] mb-10 sm:mb-12
+                     text-sm sm:text-base md:text-lg
+                     max-w-2xl mx-auto"
+        >
+          {content.subtitle.replace(/\\n/g, ' ')}
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Button variant="cta" size="lg" href="/#works">
             {content.cta}
             <ArrowRight className="w-4 h-4" aria-hidden />
